@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #0284c7; /* Hospital Medical Blue */
+  --primary-hover: #0369a1;
+  --primary-dark: #0f172a;
+  --accent-color: #e0f2fe;
+  --accent-text: #0369a1;
+  --secondary-color: #ffffff;
+  
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --info-color: #3b82f6;
+
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #f8fafc;
+
+  --bg-light: #f8fafc;
+  --bg-dark: #0b0f19;
+  
+  --sidebar-width: 260px;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #111827;
+  
+  --border-light: #e2e8f0;
+  --border-dark: #1f2937;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='dark'] {
+  --bs-body-bg: var(--bg-dark);
+  --bs-body-color: #e2e8f0;
+  --card-bg: var(--card-bg-dark);
+  --border-color: var(--border-dark);
+  --text-muted: #94a3b8;
+  --accent-color: rgba(2, 132, 199, 0.15);
+  --accent-text: #38bdf8;
+}
+
+[data-theme='light'] {
+  --bs-body-bg: var(--bg-light);
+  --bs-body-color: var(--text-dark);
+  --card-bg: var(--card-bg-light);
+  --border-color: var(--border-light);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Cards */
+.hms-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hms-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.hms-card-interactive:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Header Banner */
+.bg-gradient-hospital {
+  background: linear-gradient(135deg, #0284c7 0%, #1e40af 100%);
+  color: #ffffff;
+}
+
+.bg-gradient-emerald {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+  color: #ffffff;
+}
+
+/* Buttons */
+.btn-hms-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25);
+}
+
+.btn-hms-primary:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(2, 132, 199, 0.35);
+}
+
+.btn-hms-light {
+  background-color: var(--accent-color);
+  color: var(--accent-text);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-hms-light:hover {
+  background-color: rgba(2, 132, 199, 0.25);
+  color: var(--primary-color);
+}
+
+.btn-hms-outline {
+  background-color: transparent;
+  color: var(--bs-body-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-hms-outline:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--accent-color);
+}
+
+/* Sidebar Styling */
+.hms-sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--border-color);
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-brand {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-nav {
+  padding: 1rem 0.75rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.nav-category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 700;
+  padding: 0.75rem 1rem 0.25rem 1rem;
+}
+
+.hms-nav-link {
+  color: var(--bs-body-color);
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hms-nav-link:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.hms-nav-link.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+}
+
+.hms-nav-link .badge {
+  margin-left: auto;
+}
+
+/* Main Layout Content */
+.hms-main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 991px) {
+  .hms-sidebar {
+    transform: translateX(-100%);
+  }
+  .hms-sidebar.open {
+    transform: translateX(0);
+  }
+  .hms-main-content {
+    margin-left: 0;
+  }
+}
+
+/* Topbar Header */
+.hms-topbar {
+  height: 70px;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+/* Badges */
+.badge-status {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.badge-scheduled { background-color: rgba(59, 130, 246, 0.15); color: #2563eb; }
+.badge-waiting { background-color: rgba(245, 158, 11, 0.15); color: #d97706; }
+.badge-in-consultation { background-color: rgba(124, 58, 237, 0.15); color: #7c3aed; }
+.badge-completed { background-color: rgba(16, 185, 129, 0.15); color: #059669; }
+.badge-cancelled { background-color: rgba(239, 68, 68, 0.15); color: #dc2626; }
+
+/* Timeline EMR */
+.emr-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.emr-timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background-color: var(--border-color);
+}
+
+.emr-timeline-item {
+  position: relative;
+  margin-bottom: 1.75rem;
+}
+
+.emr-timeline-dot {
+  position: absolute;
+  left: -2rem;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  border: 3px solid var(--card-bg);
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+/* Patient Wristband QR Card */
+.patient-wristband-card {
+  background: radial-gradient(circle at top right, #f0f9ff, #ffffff);
+  border: 2px dashed var(--primary-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+/* DICOM Image Viewer Filter controls */
+.dicom-viewport {
+  background-color: #000000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  min-height: 420px;
+}
+
+.dicom-img {
+  max-height: 500px;
+  object-fit: contain;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Table Design */
+.hms-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.hms-table th {
+  background-color: rgba(2, 132, 199, 0.05);
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hms-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.hms-table tbody tr:hover {
+  background-color: rgba(2, 132, 199, 0.02);
+}
+
+/* Custom Modal Overlay */
+.hms-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.hms-modal-content {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Form Styling */
+.hms-form-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--bs-body-color);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.hms-form-input, .hms-form-select {
+  width: 100%;
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--border-color);
+  color: var(--bs-body-color);
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+}
+
+.hms-form-input:focus, .hms-form-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+/* Print Styles */
+@media print {
+  body { background: white !important; color: black !important; }
+  .hms-sidebar, .hms-topbar, .no-print { display: none !important; }
+  .hms-main-content { margin-left: 0 !important; padding: 0 !important; }
+  .printable-area { width: 100% !important; border: none !important; box-shadow: none !important; }
+}
